@@ -42,8 +42,10 @@ setInterval(setTime, 100);
 function setTime() {
     var d = new Date();
     var formattedTime = d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: "2-digit" });
-    let time = document.querySelector(".time");
-    time.innerHTML = formattedTime + " IST";
+    let time = document.querySelectorAll(".time");
+    time.forEach((e) => {
+        e.innerHTML = formattedTime + " IST";
+    })
 }
 
 // page 3 image hover effect
@@ -162,17 +164,76 @@ gsap.to(".intro", {
     duration: .2
 })
 
+function start() {
+    gsap.from(".from-top-mobile-nav", {
+        y: -100,
+        duration: .5,
+        opacity: 0,
+        delay: .5
+    });
+
+    gsap.from(".mobile-nav-links", {
+        y: -100,
+        duration: .4,
+        opacity: 0,
+        stagger: .2
+    });
+
+    gsap.from(".from-btm-mobile-nav", {
+        y: 100,
+        duration: .5,
+        opacity: 0,
+        delay: .5
+    });
+}
+
+
+let menuBtn = document.querySelector(".menu-btn")
+let navLinks = document.querySelector(".nav-links")
+let main = document.querySelector(".main");
+let mobileNav = document.querySelector(".mobile-nav")
+
+menuBtn.addEventListener("click", function () {
+    if (window.innerWidth >= 769) {
+        console.log("hello");
+        if ((navLinks.classList.contains("display-none") && (!menuBtn.classList.contains("display-none")))) {
+            navLinks.classList.remove("display-none");
+            menuBtn.classList.add("display-none");
+        }
+        else {
+            navLinks.classList.add("display-none");
+            menuBtn.classList.remove("display-none");
+        }
+    }
+    else {
+        mobileNav.classList.remove("display-none");
+        start();
+        mobileNav.style.transform = "translateY(0%)";
+    }
+})
+
+document.querySelector(".close-btn").addEventListener("click", () => {
+    mobileNav.style.transform = "translateY(-100%)"
+})
+
+main.addEventListener("click", () => {
+    if (menuBtn.classList.contains("display-none")) {
+        menuBtn.classList.remove("display-none");
+        navLinks.classList.add("display-none");
+    }
+})
+
 // loader 
 time();
-function time(){
+function time() {
     var a = 0
-    setInterval(function(){
-        a += Math.floor(Math.random()*20)
-        if(a<100){
-            document.querySelector(".timer").innerHTML = a+"%"
-        }else{
+    setInterval(function () {
+        a += Math.floor(Math.random() * 20)
+        if (a < 100) {
+            document.querySelector(".timer").innerHTML = a + "%"
+        } else {
             a = 100
-            document.querySelector(".timer").innerHTML = a+"%"
+            document.querySelector(".timer").innerHTML = a + "%"
         }
-    },200);
+    }, 200);
 }

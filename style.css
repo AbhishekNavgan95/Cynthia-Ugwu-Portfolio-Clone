@@ -26,13 +26,14 @@ body {
     overflow-x: hidden;
 }
 
-a {
+.underline {
     position: relative;
     overflow: hidden;
     padding-block: 2px;
+    text-decoration: none;
 }
 
-a::after {
+.underline::after {
     content: "";
     width: 100%;
     height: 1px;
@@ -45,7 +46,7 @@ a::after {
     transform-origin: bottom right;
 }
 
-a:hover::after{ 
+.underline:hover::after{ 
     transform-origin: bottom left;
     transform: scaleX(1);
 }
@@ -66,7 +67,7 @@ a:hover::after{
 .intro div {
     width: 5vw;
     height: 4px;
-    background-color: #000;
+    background-color: var(--black);
     position: relative;
     overflow: hidden;
 }
@@ -76,7 +77,7 @@ a:hover::after{
     width: 100%;
     height: 100%;
     position: absolute;
-    background-color:#fff;
+    background-color:var(--white);
     transform: translateX(-100%);
     animation: loder 2.3s linear;
     animation-fill-mode: forwards;
@@ -127,7 +128,7 @@ a:hover::after{
     justify-content: space-between;
 }
 
-.nav h3, .nav a {
+.nav h3, .nav a,.mobile-nav h3, .mobile-nav a {
     color: var(--white);
     text-decoration: none;
     opacity: 1;
@@ -137,18 +138,75 @@ a:hover::after{
 
 .nav div {
     display: flex;
-
 }
 
-.nav span {
+.nav div div {
     display: flex;
-    gap: 1rem;
+    gap: 3vw;
 }
 
-.nav span a{
+.display-none {
+    display: none !important;
+}
+
+.mobile-nav {
+    /* display: none; */
+}
+
+.mobile-nav h3, .mobile-nav a {
+    color: var(--black);
+}
+
+.mobile-nav-top {
+    padding-inline: 4vw;
+    border-bottom: 1px solid var(--white);
+    height: 8vh;
     display: flex;
-    gap: 1rem;
-    visibility: hidden;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.mobile-nav-top div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    overflow: hidden;
+}
+
+.mobile-nav-items {
+    padding-inline: 4vw;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    font-size: 12vw;
+    text-transform: uppercase;
+}
+
+.mobile-nav-items div {
+    overflow: hidden;
+    width: 100%;
+    padding-block: .5rem;
+}
+
+.mobile-nav-bottom {
+    padding-inline: 4vw;
+    border-top: 1px solid var(--white);
+    height: 8vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.mobile-nav-bottom div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    overflow: hidden;
+}
+
+.from-top-mobile-nav {
+    overflow: hidden;
 }
 
 /********************* page 1 *******************************/
@@ -403,18 +461,21 @@ footer {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    gap: 2rem;
 }
 
 .subscribe h4{
     color: var(--white);
     opacity: .6;
     font-size: .9rem;
+    text-transform: uppercase;
+    margin-block: 5px;
 }
 
 .subscribe a{
     color: var(--white);
     font-size: 1.2rem;
-    margin-top: 5px;
+    text-transform: uppercase;
 }
 
 .subscribe a i{
@@ -458,8 +519,7 @@ footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 3vw;
+    gap: 2vw;
 }
 
 .footer-r a{
@@ -490,7 +550,15 @@ footer {
         justify-content: center;
         padding: 0rem 3vw;
     }
+
+    .herofooter a {
+        width: 10.5rem;
+    }
     
+    .small-headings {
+        font-size: 3vw;
+    }
+
     .about {
         display: flex;
         flex-direction: column;
@@ -527,10 +595,31 @@ footer {
 
     .footer-r {
         align-items: flex-end;
-        gap: 1rem;
     }
 
     .iconset {
+        display: none;
+    }
+
+    .mobile-nav {
+        width: 100%;
+        height: 100vh;
+        background-color:var(--gray);
+        position: relative;
+        z-index: 3;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: fixed;
+        transition: transform .5s cubic-bezier(0.215, 0.610, 0.355, 1);
+        transform: translateY(-100%);
+    }
+
+    .underline::after {
+        display: none;
+    }
+
+    .cursor {
         display: none;
     }
 }
@@ -547,7 +636,7 @@ footer {
     }
 
     .heading .secondh1 {
-        margin-left: 0;
+        margin-left: 5vw;
     }
 
     .heading h5 {
@@ -555,17 +644,12 @@ footer {
         font-size: 3vw;
     }
 
-    .small-headings a {
-        font-size: 3vw
-    }
-
-
     .herofooter {
-        font-size: 3vw;
+        font-size: 4vw;
     }
 
     .page2 {
-        padding: 5rem 3vw 15vw 3vw;
+        padding: 1rem 3vw 15vw 3vw;
         height: 50vh;
     }
 
@@ -575,8 +659,10 @@ footer {
 
     .about div p{
         text-align: start;
+        font-size: 1rem;
     }
-    .cursor {
-        display: none;
+
+    .subscribe a{
+        font-size: .8rem;
     }
 }
