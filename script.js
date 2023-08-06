@@ -1,9 +1,9 @@
-// // cursor tracker
+// cursor tracker
 cursortracker();
 function cursortracker() {
     window.addEventListener("mousemove", function (dets) {
         document.querySelector(".cursor").style.transform = `translate(${dets.clientX}px, ${dets.clientY}px)`;
-    })
+    });
 }
 
 //cursor expand
@@ -45,7 +45,7 @@ function setTime() {
     let time = document.querySelectorAll(".time");
     time.forEach((e) => {
         e.innerHTML = formattedTime + " IST";
-    })
+    });
 }
 
 // page 3 image hover effect
@@ -100,7 +100,7 @@ gsap.from(".from-top-1-ele", {
     duration: .5,
     opacity: 0,
     delay: 3.3
-})
+});
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -147,13 +147,23 @@ gsap.from(".subscribe", {
     }
 });
 
-gsap.from(".footer", {
+gsap.from(".creator", {
     y: "20%",
     duration: .5,
     opacity: 0,
     delay: .5,
     scrollTrigger: {
-        trigger: ".footer",
+        trigger: ".creator",
+        scroller: ".main",
+    }
+});
+
+gsap.from(".footer", {
+    duration: .5,
+    opacity: 0,
+    delay: .5,
+    scrollTrigger: {
+        trigger: ".creator",
         scroller: ".main",
     }
 });
@@ -162,7 +172,7 @@ gsap.to(".intro", {
     y: "-100%",
     delay: 2.3,
     duration: .2
-})
+});
 
 function start() {
     gsap.from(".from-top-mobile-nav", {
@@ -188,10 +198,10 @@ function start() {
 }
 
 
-let menuBtn = document.querySelector(".menu-btn")
-let navLinks = document.querySelector(".nav-links")
+let menuBtn = document.querySelector(".menu-btn");
+let navLinks = document.querySelector(".nav-links");
 let main = document.querySelector(".main");
-let mobileNav = document.querySelector(".mobile-nav")
+let mobileNav = document.querySelector(".mobile-nav");
 
 menuBtn.addEventListener("click", function () {
     if (window.innerWidth >= 769) {
@@ -210,20 +220,20 @@ menuBtn.addEventListener("click", function () {
         start();
         mobileNav.style.transform = "translateY(0%)";
     }
-})
+});
 
 document.querySelector(".close-btn").addEventListener("click", () => {
     mobileNav.style.transform = "translateY(-100%)"
-})
+});
 
 main.addEventListener("click", () => {
     if (menuBtn.classList.contains("display-none")) {
         menuBtn.classList.remove("display-none");
         navLinks.classList.add("display-none");
     }
-})
+});
 
-// loader 
+// loader
 time();
 function time() {
     var a = 0
