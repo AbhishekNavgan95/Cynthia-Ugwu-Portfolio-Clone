@@ -487,7 +487,7 @@ body {
 @media screen and (max-width: 769px) {
     .mobile-nav {
         width: 100%;
-        height: 100vh;
+        height: 100dvh;
         background-color: var(--gray);
         position: relative;
         z-index: 3;
