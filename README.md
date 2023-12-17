@@ -8,9 +8,6 @@ Welcome to the Cynthia-Ugwu-Portfolio-Clone project! This project is a clone of 
 2. [Features](#features)
 3. [Technologies Used](#technologies-used)
 4. [Getting Started](#getting-started)
-5. [Usage](#usage)
-6. [Contributing](#contributing)
-7. [License](#license)
 
 ---
 
